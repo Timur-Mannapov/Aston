@@ -302,14 +302,14 @@ public class ArrayList<T> implements List<T> {
             if (arrayList.get(i).compareTo(pivot) < 0) {
                 index++;
 
-                T temp = arrayList.get(index + 1);
+                T temp = arrayList.get(index);
                 arrayList.set(index, arrayList.get(i));
                 arrayList.set(i, temp);
             }
         }
 
         T temp = arrayList.get(index + 1);
-        arrayList.set(index, arrayList.get(rightIndex));
+        arrayList.set(index+1, arrayList.get(rightIndex));
         arrayList.set(rightIndex, temp);
 
         return index + 1;
