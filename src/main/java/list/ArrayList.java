@@ -309,7 +309,7 @@ public class ArrayList<T> implements List<T> {
         }
 
         T temp = arrayList.get(index + 1);
-        arrayList.set(index+1, arrayList.get(rightIndex));
+        arrayList.set(index + 1, arrayList.get(rightIndex));
         arrayList.set(rightIndex, temp);
 
         return index + 1;
