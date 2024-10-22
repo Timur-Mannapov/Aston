@@ -61,8 +61,8 @@ public class ArrayListTest {
 
         assertAll(
                 () -> assertEquals(2, arrayList.size()),
-                () -> assertEquals("One", arrayList.get(0)),
-                () -> assertEquals("Three", arrayList.get(1)));
+                () -> assertEquals("Один", arrayList.get(0)),
+                () -> assertEquals("Три", arrayList.get(1)));
     }
 
     @Test
