@@ -27,7 +27,7 @@ public class ArrayList<T> implements List<T> {
      * Конструктор по умолчанию создает список с вместимостью 10.
      */
     public ArrayList() {
-        elements = new Objects[DEFAULT_SIZE];
+        elements = new Object[DEFAULT_SIZE];
     }
 
     /**
@@ -39,7 +39,7 @@ public class ArrayList<T> implements List<T> {
         if (capacity < 1) {
             throw new IllegalArgumentException(INCORRECT_CAPACITY_MESSAGE);
         }
-        elements = new Objects[capacity];
+        elements = new Object[capacity];
     }
 
     /**
@@ -78,7 +78,7 @@ public class ArrayList<T> implements List<T> {
     @Override
     public void add(int index, T element) {
         if (index < 0 || index > size) {
-            throw new IllegalArgumentException(INCORRECT_CAPACITY_MESSAGE);
+            throw new IllegalArgumentException(INCORRECT_INDEX_MESSAGE);
         }
         if (size == 0) {
             elements[start] = element;
@@ -192,6 +192,7 @@ public class ArrayList<T> implements List<T> {
         if (index < 0 || index >= size) {
             throw new IllegalArgumentException(INCORRECT_INDEX_MESSAGE);
         }
+
         if (index <= size / 2) { // Удаление из левой части
             for (int i = index; i > 0; i--) {
                 elements[start + i] = elements[start + i - 1];
@@ -202,13 +203,13 @@ public class ArrayList<T> implements List<T> {
             for (int i = index; i < size - 1; i++) {
                 elements[start + i] = elements[start + i + 1];
             }
-            elements[size] = null;
+            elements[start + size - 1] = null;
         }
         size--;
     }
 
     /**
-     * Удаляет все элементы из списка, обнуляя массив и сбрасывая размер списка на 0.
+     * Удаляет все элементы из списка, обнуляя массив и сбрасывая размер списка до 0.
      */
     @Override
     public void clear() {
@@ -275,7 +276,7 @@ public class ArrayList<T> implements List<T> {
      * @param rightIndex - правый индекс
      * @param <T>        - тип элементов списка
      */
-    public <T extends Comparable<T>> void quickSort(ArrayList<T> arrayList, int leftIndex, int rightIndex) {
+    public static <T extends Comparable<T>> void quickSort(ArrayList<T> arrayList, int leftIndex, int rightIndex) {
         if (leftIndex < rightIndex) {
             int separation = separation(arrayList, leftIndex, rightIndex);
 
@@ -293,7 +294,7 @@ public class ArrayList<T> implements List<T> {
      * @param <T>        - тип элементов списка
      * @return индекс опорного элемента после разделения
      */
-    private <T extends Comparable<T>> int separation(ArrayList<T> arrayList, int leftIndex, int rightIndex) {
+    private static <T extends Comparable<T>> int separation(ArrayList<T> arrayList, int leftIndex, int rightIndex) {
         T pivot = arrayList.get(rightIndex);
         int index = leftIndex - 1;
 
